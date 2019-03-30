@@ -1,0 +1,20 @@
+{
+  "queryType": "timeseries",
+  "dataSource": "generic_events",
+  "intervals": "2017-01-01T00:00:00.000/2017-01-31T00:00:00.000",
+  "granularity": "day",
+  "filter": {
+    "type": "and",
+    "fields": [
+        { "type": "selector", "dimension": "tenantId", "value": "25" },
+        { "type": "selector", "dimension": "type", "value": "orderStatusCompliant" }
+    ]
+  },
+  "context": {
+    "timeout": 180000
+  },
+  "aggregations": [
+    { "name": "userCount", "type": "count" }
+  ],
+  "threshold": 100000
+}

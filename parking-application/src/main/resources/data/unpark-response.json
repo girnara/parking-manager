@@ -1,0 +1,12 @@
+{
+  "status": "SUCCESS",
+  "statusMessage": "Successfully processed your request",
+  "payload": {
+    "id": "8c4f1313-39e3-4fee-85de-431275ab0e55",
+    "parkingSpotId": "1",
+    "timestamp": 1553986160345,
+    "issueAt": 1553986160304,
+    "payedAmount": 10.5,
+    "status": "PAID"
+  }
+}

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>girnara.abhay.parking</groupId>
+    <artifactId>parking-manager</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1</version>
+
+    <profiles>
+        <profile>
+            <id>buildProfile</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>parking-domain-model</module>
+                <module>parking-adapter-client</module>
+                <module>parking-repository</module>
+                <module>parking-service</module>
+                <module>parking-application</module>
+            </modules>
+        </profile>
+    </profiles>
+
+    <name>Parking Core Service</name>
+    <description>Vehicle Parking Management Service</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.1.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <start-class>girnara.abhay.parking.application.ParkingCoreApplication</start-class>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+	    <maven.compiler.source>1.8</maven.compiler.source>
+    	<maven.compiler.target>1.8</maven.compiler.target>
+        <spring.boot.version>1.4.1.RELEASE</spring.boot.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <swagger.version>2.4.0</swagger.version>
+        <jackson.version>2.6.6</jackson.version>
+        <jackson.databind.version>2.6.6</jackson.databind.version>
+        <log4j.version>2.5</log4j.version>
+        <docker.image.prefix>parking</docker.image.prefix>
+        <docker.plugin.version>0.4.13</docker.plugin.version>
+        <spring.boot.admin.version>1.4.5</spring.boot.admin.version>
+        <unirest.version>1.3.0</unirest.version>
+        <junit.version>4.12</junit.version>
+        <apache.common.logging.version>1.1.1</apache.common.logging.version>
+        <http.async.client.version>4.0-beta4</http.async.client.version>
+        <apache.http.mime.version>4.3</apache.http.mime.version>
+        <apache.http.client.version>4.5.2</apache.http.client.version>
+        <gson.version>20090211</gson.version>
+        <jolokia.version>1.3.6</jolokia.version>
+        <spring.maven.plugin.version>1.1.8.RELEASE</spring.maven.plugin.version>
+        <sonar.qube.version>3.2</sonar.qube.version>
+        <maven.sure.fire.plugin.version>2.12.4</maven.sure.fire.plugin.version>
+        <skipTests>false</skipTests>
+        <skipITs>${skipTests}</skipITs>
+        <skipUTs>${skipTests}</skipUTs>
+        <joda.date.time.library.version>2.10.1</joda.date.time.library.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>parking-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${sonar.qube.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven.sure.fire.plugin.version}</version>
+                <configuration>
+                    <skipTests>${skipTests}</skipTests>
+                    <skipITs>${skipITs}</skipITs>
+                    <includes>
+                        <include>**/*IntegrationTest.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.sure.fire.plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                    </excludes>
+                    <skipTests>${skipUTs}</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>exec</classifier>
+                            <mainClass>${start-class}</mainClass>
+                            <layout>JAR</layout>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

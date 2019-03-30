@@ -1,0 +1,172 @@
+{
+  "status": "SUCCESS",
+  "statusMessage": "Successfully processed your request",
+  "payload": {
+    "id": "b37ef77f-76c1-4430-a3c4-311436b82fa8",
+    "name": "weWorkBlueOneSquare",
+    "address": {
+      "streetAddress": "BlueOneSquare",
+      "city": "Gurgaon",
+      "state": "HR",
+      "zipCode": "122001",
+      "country": "IN"
+    },
+    "parkingRate": {
+      "dayTypeHourlyRate": {
+        "WEEKDAY": 10.5,
+        "WEEKENDS": 25.5
+      }
+    },
+    "largeSpotCount": 0,
+    "motorbikeSpotCount": 0,
+    "maxLargeCount": 20,
+    "maxMotorbikeCount": 20,
+    "entranceGates": [
+      {
+        "id": "GATE-ENTRY-1"
+      }
+    ],
+    "exitGates": [
+      {
+        "id": "GATE-EXIT-1"
+      }
+    ],
+    "parkingFloors": [
+      {
+        "name": "LEVEL-B1",
+        "largeSpots": {
+          "1": {
+            "type": "LARGE"
+          },
+          "2": {
+            "type": "LARGE"
+          },
+          "3": {
+            "type": "LARGE"
+          },
+          "4": {
+            "type": "LARGE"
+          },
+          "5": {
+            "type": "LARGE"
+          },
+          "6": {
+            "type": "LARGE"
+          },
+          "7": {
+            "type": "LARGE"
+          },
+          "8": {
+            "type": "LARGE"
+          },
+          "9": {
+            "type": "LARGE"
+          },
+          "10": {
+            "type": "LARGE"
+          }
+        },
+        "motorbikeSpots": {
+          "11": {
+            "type": "MOTORBIKE"
+          },
+          "12": {
+            "type": "MOTORBIKE"
+          },
+          "13": {
+            "type": "MOTORBIKE"
+          },
+          "14": {
+            "type": "MOTORBIKE"
+          },
+          "15": {
+            "type": "MOTORBIKE"
+          },
+          "16": {
+            "type": "MOTORBIKE"
+          },
+          "17": {
+            "type": "MOTORBIKE"
+          },
+          "18": {
+            "type": "MOTORBIKE"
+          },
+          "19": {
+            "type": "MOTORBIKE"
+          },
+          "20": {
+            "type": "MOTORBIKE"
+          }
+        }
+      },
+      {
+        "name": "LEVEL-B2",
+        "largeSpots": {
+          "101": {
+            "type": "LARGE"
+          },
+          "102": {
+            "type": "LARGE"
+          },
+          "103": {
+            "type": "LARGE"
+          },
+          "104": {
+            "type": "LARGE"
+          },
+          "105": {
+            "type": "LARGE"
+          },
+          "106": {
+            "type": "LARGE"
+          },
+          "107": {
+            "type": "LARGE"
+          },
+          "108": {
+            "type": "LARGE"
+          },
+          "109": {
+            "type": "LARGE"
+          },
+          "110": {
+            "type": "LARGE"
+          }
+        },
+        "motorbikeSpots": {
+          "111": {
+            "type": "MOTORBIKE"
+          },
+          "112": {
+            "type": "MOTORBIKE"
+          },
+          "113": {
+            "type": "MOTORBIKE"
+          },
+          "114": {
+            "type": "MOTORBIKE"
+          },
+          "115": {
+            "type": "MOTORBIKE"
+          },
+          "116": {
+            "type": "MOTORBIKE"
+          },
+          "117": {
+            "type": "MOTORBIKE"
+          },
+          "118": {
+            "type": "MOTORBIKE"
+          },
+          "119": {
+            "type": "MOTORBIKE"
+          },
+          "120": {
+            "type": "MOTORBIKE"
+          }
+        }
+      }
+    ],
+    "activeTickets": {}
+  }
+}

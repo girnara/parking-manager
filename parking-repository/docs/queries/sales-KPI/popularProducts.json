@@ -1,0 +1,16 @@
+{
+   "queryType":"timeseries",
+   "dataSource":"cart_events",
+   "intervals":"2017-01-01T00:00:00.000/2017-01-31T00:00:00.000",
+   "granularity":"day",
+   "dimensions": ["productId"],
+   "context":{
+      "timeout":180000
+   },
+   "filter":{
+      "type": "selector", "dimension": "tenantId", "value": "26"
+   },
+   "aggregations":[
+      { "name":"count", "type":"longSum", "fieldName":"count" }
+   ]
+}

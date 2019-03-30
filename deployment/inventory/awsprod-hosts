@@ -1,0 +1,5 @@
+[backupServer]
+app2.in.prod.parking.infra
+
+[appServer]
+app1.in.prod.parking.infra

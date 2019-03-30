@@ -1,0 +1,12 @@
+jdk_version: '8'
+symlnk_to: 'java{{ jdk_version }}'
+accept_oracle_licence: true
+deployment_app_directory: '/App/core/parking-manager/'
+app_log_directory: '/App/log/core/parking-manager/'
+service_name: 'parking'
+env: 'dev'
+slack_webhook_url: 'https://app.slack.com/v1/clientId/token'
+region: 'in'
+xms: '1g'
+xmx: '1g'
+service_jar: '{{ deployment_app_directory }}service/parking-application-0.0.1.jar'

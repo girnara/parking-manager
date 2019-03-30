@@ -1,0 +1,52 @@
+{
+  "address": {
+    "city": "Gurgaon",
+    "country": "IN",
+    "state": "HR",
+    "streetAddress": "BlueOneSquare",
+    "zipCode": "122001"
+  },
+  "entranceGates": [
+    {
+      "id": "GATE-ENTRY-1"
+    }
+  ],
+  "exitGates": [
+    {
+      "id": "GATE-EXIT-1"
+    }
+  ],
+  "id": "WeWorkParking",
+  "largeSpotCount": 0,
+  "maxLargeCount": 3,
+  "maxMotorbikeCount": 2,
+  "motorbikeSpotCount": 0,
+  "name": "weWorkBlueOneSquare",
+  "parkingFloors": [
+    {
+      "largeSpots": {
+        "1": {
+          "type":"LARGE",
+          "free": true
+        },
+        "2": {
+          "type":"LARGE",
+          "free": true
+        }
+      },
+      "motorbikeSpots": {
+        "20": {
+          "type":"MOTORBIKE",
+          "free": true
+        }
+      },
+      "name": "LEVEL-B1"
+    }
+  ],
+  "parkingRate": {
+    "dayTypeHourlyRate": {
+      "DEFAULT": 10.5,
+      "WEEKENDS": 25.5
+    }
+  }
+}

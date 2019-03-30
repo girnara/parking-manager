@@ -1,0 +1,75 @@
+{
+  "queryType": "groupBy",
+  "dataSource":{
+    "type": "query",
+    "query": {
+      "queryType": "groupBy",
+      "dataSource": "conversation_events",
+      "intervals": "2017-12-01/2017-12-26",
+      "granularity": "all",
+      "context": { "timeout": 180000 },
+      "dimensions": ["sessionId", "count"],
+      "aggregations": [
+        {
+          "name": "maxTime", "type": "javascript", "fieldNames": [ "__time" ],
+          "fnAggregate": "function($$,___time) { return Math.max($$,___time); }",
+          "fnCombine": "function(a,b) { return Math.max(a,b); }",
+          "fnReset": "function() { return -Infinity; }"
+        },
+        {
+          "name": "minTime",
+          "type": "javascript",
+          "fieldNames": [ "__time" ],
+          "fnAggregate": "function($$,___time) { return Math.min($$,___time); }",
+          "fnCombine": "function(a,b) { return Math.min(a,b); }",
+          "fnReset": "function() { return Infinity; }"
+        }
+      ],
+      "postAggregations": [
+        {
+          "name": "conversation_duration",
+          "type": "arithmetic",
+          "fn": "-",
+          "fields": [
+            {
+              "type": "fieldAccess", "fieldName": "maxTime"
+            },
+            {
+              "type": "fieldAccess", "fieldName": "minTime"
+            }
+          ]
+        }
+      ],
+      "metric": "conversation_duration"
+    }
+  },
+  "granularity": "all",
+  "aggregations": [
+    { "type": "javascript",
+      "name": "totalConversationDuration",
+      "fieldNames": ["conversation_duration"],
+      "fnAggregate": "function(current, v) { return current + v; } ",
+      "fnCombine": "function(partialA, partialB) { return partialA + partialB; }",
+      "fnReset": "function() { return 0; }"
+    },
+    {
+      "type":"count", "name":"totalUsers", "fieldNames":["count"]
+    }
+  ],
+  "postAggregations": [
+    {
+      "name": "averageConversationDuration",
+      "type": "arithmetic",
+      "fn": "/",
+      "fields": [
+        {
+          "type": "fieldAccess", "fieldName": "totalConversationDuration"
+        },
+        {
+          "type": "fieldAccess", "fieldName": "totalUsers"
+        }
+      ]
+    }
+  ],
+  "intervals": "2017-12-01/2017-12-26"
+}

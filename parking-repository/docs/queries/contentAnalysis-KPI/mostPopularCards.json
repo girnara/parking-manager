@@ -1,0 +1,22 @@
+{
+  "queryType": "timeseries",
+  "dataSource": "asset_tracker_events",
+  "intervals": "2017-01-01T00:00:00.000/2017-01-31T00:00:00.000",
+  "granularity": "all",
+  "descending": "true",
+  "filter": { "type": "selector", "dimension": "tenantId", "value": "26" },
+  "context": {
+    "timeout": 180000
+  },
+  "aggregations": [
+    {
+      "name": "uniqueCards",
+      "type": "cardinality",
+      "fieldNames": [
+        "assetId"
+      ],
+      "byRow": true
+    }
+  ],
+  "threshold": 10
+}

@@ -1,0 +1,13 @@
+{
+  "queryType": "timeseries",
+  "dataSource": "conversation_events",
+  "intervals": "2017-01-01T00:00:00.000/2017-01-31T00:00:00.000",
+  "granularity": "day",
+  "context": {
+    "timeout": 180000
+  },
+  "aggregations": [
+    { "name": "totalMessages", "type": "count" }
+  ],
+  "threshold": 100000
+}

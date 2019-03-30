@@ -1,0 +1,20 @@
+{
+   "queryType":"timeseries",
+   "dataSource":"checkout_events",
+   "intervals":"2017-01-01T00:00:00.000/2017-01-31T00:00:00.000",
+   "granularity":"day",
+   "dimensions": ["userLocation"],
+   "context":{
+      "timeout":180000
+   },
+   "filter":{
+      "type": "and",
+      "fields": [
+          { "type": "selector", "dimension": "tenantId", "value": "26" },
+          { "type": "selector", "dimension": "status", "value": "SUCCEEDED" }
+      ]
+   },
+   "aggregations":[
+      { "name":"potentialRevenue", "type":"doubleSum", "fieldName":"total" }
+   ]
+}

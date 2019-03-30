@@ -1,0 +1,17 @@
+jira_policy_enabled=1
+
+run_commit_msg_format_policy()
+{
+ if egrep -qc "JIRA:( )?[A-Z]+-[0-9]+" $1; then
+   return 0
+ else
+   echo "[POLICY] Your message is not formatted correctly, please mention jira ticket in your commit message, eg JIRA:PARKING-01"
+   exit -1
+ fi
+}
+
+if [ $jira_policy_enabled -eq 1 ]; then
+ run_commit_msg_format_policy $1
+fi
+
+exit $?

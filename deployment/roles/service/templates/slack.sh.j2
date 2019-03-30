@@ -1,0 +1,16 @@
+HOSTNAME=`hostname`
+SERVICE_NAME=$1
+ENV=$2
+REGION=$3
+IP=`ip r |tail -1|awk -F "src" '{print $2}'`
+echo $HOSTNAME 
+echo $SERVICE_NAME
+echo $IP
+cp  /App/data.json /tmp/data_$SERVICE_NAME.json
+chmod 775 /tmp/data_$SERVICE_NAME.json
+sed -i "s/HOSTNAME/$HOSTNAME/g" /tmp/data_$SERVICE_NAME.json
+sed -i "s/SERVICE_NAME/$SERVICE_NAME/g" /tmp/data_$SERVICE_NAME.json
+sed -i "s/HOST_IP/$IP/g" /tmp/data_$SERVICE_NAME.json
+sed -i "s/REGION/$REGION/g" /tmp/data_$SERVICE_NAME.json
+sed -i "s/ENV/$ENV/g" /tmp/data_$SERVICE_NAME.json
+curl -X POST -H 'Content-type: application/json' --data @/tmp/data_$SERVICE_NAME.json  {{slack_webhook_url}}
