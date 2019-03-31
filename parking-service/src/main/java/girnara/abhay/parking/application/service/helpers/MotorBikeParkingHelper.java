@@ -75,6 +75,7 @@ public class MotorBikeParkingHelper implements ParkingHelper {
         if(entry.getValue().IsFree()) {
           ParkingTicket parkingTicket  = parkingTicketRepository.park(clientId, vehicle, entry.getKey());
           entry.getValue().setFree(false);
+          entry.getValue().setVehicle(vehicle);
           parkingLot.setMotorbikeSpotCount(parkingLot.getMotorbikeSpotCount() + 1);
           parkingRepository.update(clientId, parkingLot);
           return parkingTicket;

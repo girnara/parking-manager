@@ -1,7 +1,7 @@
 ---
-- name: Social Health Check API.
+- name: Service Health Check API.
   uri:
-    url: http://localhost:38080/v1/health/366xhegrndhfspwiryrskwhd0801
+    url: http://localhost:28080/v1/health/366xhegrndhfspwiryrskwhd0801
     method: GET
     status_code: 200
     body_format: json

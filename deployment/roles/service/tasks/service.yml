@@ -27,7 +27,7 @@
    
 
 
-- name: Create symlink to pipeline
+- name: Create symlink to {{service_name}} service
   file:
     src: '{{deployment_app_directory}}{{ BUILD_NUMBER }}'
     dest: '{{deployment_app_directory}}service'

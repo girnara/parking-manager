@@ -54,12 +54,22 @@ public class ParkingRequestProcessorImpl implements ParkingRequestProcessor {
         if(ObjectUtils.isEmpty(parkingLot.getAddress())) {
             throw new NonRecoverableException(AbstractConstants.ExceptionCode.PARKING_LOT_ADDRESS_NULL_ERROR.getMessage(), AbstractConstants.ExceptionCode.PARKING_LOT_ADDRESS_NULL_ERROR);
         }
-        if(ObjectUtils.isEmpty(parkingLot.getParkingRate())) {
+        if(ObjectUtils.isEmpty(parkingLot.getParkingRate()) || CollectionUtils.isEmpty(parkingLot.getParkingRate().getDayTypeHourlyRate())) {
             throw new NonRecoverableException(AbstractConstants.ExceptionCode.PARKING_LOT_RATE_NULL_ERROR.getMessage(), AbstractConstants.ExceptionCode.PARKING_LOT_RATE_NULL_ERROR);
         }
         if(StringUtils.isEmpty(parkingLot.getName())) {
             throw new NonRecoverableException(AbstractConstants.ExceptionCode.PARKING_LOT_NAME_NULL_ERROR.getMessage(), AbstractConstants.ExceptionCode.PARKING_LOT_NAME_NULL_ERROR);
         }
         return parkingService.createParkingLot(parkingLot, clientId);
+    }
+
+    @Override
+    public ParkingLot getParkingLot(String clientId) throws RecoverableException, NonRecoverableException {
+        return parkingService.getParkingLot(clientId);
+    }
+
+    @Override
+    public ParkingTicket getParkingTicketByRegistrationNumber(String clientId, String registrationNumber) throws NonRecoverableException, RecoverableException {
+        return parkingService.findByRegistrationNumber(clientId, registrationNumber);
     }
 }

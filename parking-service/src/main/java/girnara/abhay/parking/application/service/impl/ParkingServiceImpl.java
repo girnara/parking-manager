@@ -31,10 +31,16 @@ public class ParkingServiceImpl implements ParkingService {
   }
 
   @Override
+  public ParkingLot getParkingLot(String clientId) throws RecoverableException, NonRecoverableException {
+    return parkingRepository.get(clientId);
+  }
+
+  @Override
   public ParkingTicket park(String clientId, Vehicle vehicle) throws RecoverableException, NonRecoverableException{
     ParkingLot parkingLot = parkingRepository.get(clientId);
     if(parkingLot.getExistingVehicles().containsKey(vehicle.getRegistrationNumber())) {
-      return parkingLot.getActiveTickets().get(parkingLot.getExistingVehicles().get(vehicle.getRegistrationNumber()));
+      throw new NonRecoverableException(AbstractConstants.ExceptionCode.VEHICLE_IS_ALREADY_IN_PARKING_ERROR.getMessage(), AbstractConstants.ExceptionCode.VEHICLE_IS_ALREADY_IN_PARKING_ERROR);
+
     }
     if(parkingLot.getMaxLargeCount() == parkingLot.getLargeSpotCount() && parkingLot.getMaxMotorbikeCount() == parkingLot.getMotorbikeSpotCount() ) {
       throw new NonRecoverableException(AbstractConstants.ExceptionCode.PARKING_FULL_ERROR.getMessage(), AbstractConstants.ExceptionCode.PARKING_FULL_ERROR);
@@ -45,6 +51,7 @@ public class ParkingServiceImpl implements ParkingService {
     ParkingHelper parkingHelper = parkingHelperFactory.getHelperByVehicleType(vehicle.getType());
     ParkingTicket parkingTicket = parkingHelper.getTicket(clientId, vehicle, parkingLot);
     parkingLot.getActiveTickets().put(parkingTicket.getId(), parkingTicket);
+    parkingLot.getExistingVehicles().put(vehicle.getRegistrationNumber(), parkingTicket.getId());
     return parkingTicket;
   }
 
@@ -60,5 +67,14 @@ public class ParkingServiceImpl implements ParkingService {
     ParkingTicket parkingTicket = parkingHelper.unParkTicket(clientId, vehicle, parkingLot);
     parkingLot.getActiveTickets().remove(parkingTicketId);
     return paymentServiceClient.payableAmount(clientId, parkingLot, parkingTicket);
+  }
+
+  @Override
+  public ParkingTicket findByRegistrationNumber(String clientId, String vehicleRegistrationNumber) throws NonRecoverableException, RecoverableException {
+    ParkingLot parkingLot = parkingRepository.get(clientId);
+    if(!parkingLot.getExistingVehicles().containsKey(vehicleRegistrationNumber)) {
+      throw new NonRecoverableException(AbstractConstants.ExceptionCode.VEHICLE_DOES_NOT_EXISTS_ERROR.getMessage(), AbstractConstants.ExceptionCode.VEHICLE_DOES_NOT_EXISTS_ERROR);
+    }
+    return parkingLot.getActiveTickets().get(parkingLot.getExistingVehicles().get(vehicleRegistrationNumber));
   }
 }

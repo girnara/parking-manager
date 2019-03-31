@@ -13,4 +13,6 @@ public interface ParkingRequestProcessor {
     public ParkingTicket park(Vehicle vehicle, String clientId) throws RecoverableException, NonRecoverableException;
     public ParkingTicket unPark(String parkingTicketId, String clientId) throws RecoverableException, NonRecoverableException;
     public ParkingLot createParkingLot(ParkingLot parkingLot, String clientId) throws RecoverableException, NonRecoverableException;
+    public ParkingLot getParkingLot(String clientId) throws RecoverableException, NonRecoverableException;
+    public ParkingTicket getParkingTicketByRegistrationNumber(String clientId, String registrationNumber) throws NonRecoverableException, RecoverableException;
 }

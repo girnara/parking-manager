@@ -4,6 +4,7 @@ import org.joda.time.DateTimeZone;
 
 public abstract class AbstractConstants {
   public static final String DEFAULT_TYPE_DAY = "DEFAULT";
+  public static final String SECRET_KEY = "366xhegrndhfspwiryrskwhd0801";
   public static final double DEFAULT_PARKING_FEE = 100.0;
   public static final DateTimeZone DEFAULT_TIME_ZONE = DateTimeZone.UTC;
   public enum ExceptionCode {
@@ -13,6 +14,7 @@ public abstract class AbstractConstants {
     DESERIALIZATION_FAILED_ERROR("Error occurred while deserializing of request object"),
     SERIALIZATION_FAILED_ERROR("Error occurred while serializing of request object"),
     NULL_REQUEST_ERROR("Request can not be null"),
+    UNAUTHORISED_ACCESS_ERROR("You are not allowed to access this service"),
     ENTRANCE_GATE_NULL_ERROR("Entrance gate can not be zero"),
     VEHICLE_REGISTRATION_NUMBER_NULL_ERROR("Vehicle registration number can not be null"),
     VEHICLE_TYPE_NULL_ERROR("Vehicle type can not be empty"),
@@ -24,6 +26,8 @@ public abstract class AbstractConstants {
     PARKING_LOT_ALREADY_EXISTS_ERROR("Can not recreate a existing parking lot"),
     PARKING_FULL_ERROR("Parking full, Please visit another nearest parking lot"),
     PARKING_LOT_DOES_NOT_EXISTS_ERROR("Invalid client Id"),
+    VEHICLE_IS_ALREADY_IN_PARKING_ERROR("Vehicle is already assigned the parking ticket. Please search the parking ticket with vehicle registration"),
+    VEHICLE_DOES_NOT_EXISTS_ERROR("Vehicle does not exist in this parking"),
     PARKING_TICKET_INVALID_ERROR("Parking ticket is invalid"),
     INVALID_VEHICLE_TYPE_ERROR("Invalid vehicle type"),
     INVALID_REQUEST_ERROR("Request is not valid");

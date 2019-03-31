@@ -18,8 +18,8 @@
   ],
   "id": "WeWorkParking",
   "largeSpotCount": 0,
-  "maxLargeCount": 3,
-  "maxMotorbikeCount": 2,
+  "maxLargeCount": 2,
+  "maxMotorbikeCount": 1,
   "motorbikeSpotCount": 0,
   "name": "weWorkBlueOneSquare",
   "parkingFloors": [

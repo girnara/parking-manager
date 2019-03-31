@@ -470,10 +470,145 @@ Response Json
 }
 ```
 
+## Get Parking Lot info
+Goto link and run following commands
+```
+curl -X GET --header 'Accept: application/json' --header 'X-ACCESS-TOKEN: TEST' 'http://localhost:28080/v1/admin/WeWork'
+```
+
+Response Json:
+```
+{
+  "status": "SUCCESS",
+  "statusMessage": "Successfully processed your request",
+  "payload": {
+    "id": "cbe6e462-0551-4efe-ad3f-03cd1dfe1246",
+    "name": "weWorkBlueOneSquare",
+    "address": {
+      "streetAddress": "BlueOneSquare",
+      "city": "Gurgaon",
+      "state": "HR",
+      "zipCode": "122001",
+      "country": "IN"
+    },
+    "parkingRate": {
+      "dayTypeHourlyRate": {
+        "DEFAULT": 10.5,
+        "WEEKENDS": 25.5
+      }
+    },
+    "largeSpotCount": 1,
+    "motorbikeSpotCount": 1,
+    "maxLargeCount": 2,
+    "maxMotorbikeCount": 1,
+    "existingVehicles": {
+      "HR26-AB2214": "962efc95-55bd-426a-92cc-ac2ecaa7704a",
+      "HR26-AB3214": "233cb722-9d0e-4df4-991a-70a730ba00fe"
+    },
+    "entranceGates": [
+      {
+        "id": "GATE-ENTRY-1"
+      }
+    ],
+    "exitGates": [
+      {
+        "id": "GATE-EXIT-1"
+      }
+    ],
+    "parkingFloors": [
+      {
+        "name": "LEVEL-B1",
+        "largeSpots": {
+          "1": {
+            "vehicle": {
+              "class": "girnara.abhay.parking.domain.model.vehicles.Bus",
+              "registrationNumber": "HR26-AB3214",
+              "type": "BUS",
+              "ticket": {
+                "id": "233cb722-9d0e-4df4-991a-70a730ba00fe",
+                "parkingSpotId": "1",
+                "timestamp": 1554011268907,
+                "issueAt": 1554011268907,
+                "payedAmount": 0,
+                "status": "ACTIVE"
+              }
+            },
+            "type": "LARGE"
+          },
+          "2": {
+            "type": "LARGE"
+          }
+        },
+        "motorbikeSpots": {
+          "20": {
+            "vehicle": {
+              "class": "girnara.abhay.parking.domain.model.vehicles.Motorcycle",
+              "registrationNumber": "HR26-AB2214",
+              "type": "MOTORBIKE",
+              "ticket": {
+                "id": "962efc95-55bd-426a-92cc-ac2ecaa7704a",
+                "parkingSpotId": "20",
+                "timestamp": 1554011249906,
+                "issueAt": 1554011249873,
+                "payedAmount": 0,
+                "status": "ACTIVE"
+              }
+            },
+            "type": "MOTORBIKE"
+          }
+        }
+      }
+    ],
+    "activeTickets": {
+      "962efc95-55bd-426a-92cc-ac2ecaa7704a": {
+        "id": "962efc95-55bd-426a-92cc-ac2ecaa7704a",
+        "parkingSpotId": "20",
+        "timestamp": 1554011249906,
+        "issueAt": 1554011249873,
+        "payedAmount": 0,
+        "status": "ACTIVE"
+      },
+      "233cb722-9d0e-4df4-991a-70a730ba00fe": {
+        "id": "233cb722-9d0e-4df4-991a-70a730ba00fe",
+        "parkingSpotId": "1",
+        "timestamp": 1554011268907,
+        "issueAt": 1554011268907,
+        "payedAmount": 0,
+        "status": "ACTIVE"
+      }
+    }
+  }
+}
+
+```
+
+
+## Search Parking Ticket By Registration Number
+Goto http://localhost:28080/swagger-ui.html#!/admin-controller/getParkingTicketUsingGET and run following command to search the parking ticket by registration number
+```
+curl -X GET --header 'Accept: application/json' --header 'X-ACCESS-TOKEN: TEST' 'http://localhost:28080/v1/admin/WeWork/vehicles/HR26-BW1234'
+```
+
+Response Json:
+```
+{
+  "status": "SUCCESS",
+  "statusMessage": "Successfully processed your request",
+  "payload": {
+    "id": "a34b197a-a025-4c6b-a696-99796b31fe75",
+    "timestamp": 1553984338698,
+    "issueAt": 1553984338658,
+    "payedAmount": 0,
+    "status": "ACTIVE"
+  }
+}
+```
+
 ## Deployment
 
 Deployment folder contain the ansible role for deployment on ubuntu 16.04 as systemctl service with slack notification
-Export your build number as 100(It can be your jenkins build number. You need to add the ssh public key on target hosts
+Export your build number as 100(It can be your jenkins build number. You need to add the ssh public key on target hosts. We uniquely identify the application by its name(parking), region(in/us/eu/cn/jp), env(dev/qa/uat/prod)
+You need to create manual symbolic link first time to avoid ansible role failure in service.yml line number
 ```
 $ export BUILD_NUMBER=100
 $ mkdir -p deployment/application/$BUILD_NUMBER
@@ -483,8 +618,25 @@ $ sudo ansible-playbook -e "env=dev" -e "region=in"  -e "BUILD_NUMBER=100" -i in
 ```
 
 
+## Logging
+For local development logging will be in project root directory. i.e. with parking-application.log file. Each file as size cap of 200MB and purged automatically after the number of days limit.
+```
+DEV  : /App/log/core/parking-manager/parking-application-in-dev.log
+QA   : /App/log/core/parking-manager/parking-application-in-qa.log
+UAT  : /App/log/core/parking-manager/parking-application-in-uat.log
+PROD : /App/log/core/parking-manager/parking-application-in-prod.log
 
+```
 
+## Package structure
+As a service we have created multiple package with each having different responsibilities.
+```
+parking-domain-model   : Storing the common domain model POJO, common utilities and interfaces.
+parking-adapter-client : All the downstream services will be integrated in this package. i.e. PaymentServiceClient in mentioned example.
+parking-repository     : All the persistence repository to store the current state of application in Database. i.e. In our example we have used in memory map.
+parking-service        : All business logic for create/read/update/delete a service and controller.
+parking-application    : All application configuration and bean initialization.
+```
 ## Authors
 
 * **Abhay Girnara** - *Initial work* - [girnara](https://github.com/girnara)
