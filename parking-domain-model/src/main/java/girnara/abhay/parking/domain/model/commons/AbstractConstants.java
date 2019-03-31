@@ -2,6 +2,10 @@ package girnara.abhay.parking.domain.model.commons;
 
 import org.joda.time.DateTimeZone;
 
+/**
+ * Created by abhay on 30/03/19.
+ */
+
 public abstract class AbstractConstants {
   public static final String DEFAULT_TYPE_DAY = "DEFAULT";
   public static final String DEFAULT_PAYMENT_REF = "CASH";

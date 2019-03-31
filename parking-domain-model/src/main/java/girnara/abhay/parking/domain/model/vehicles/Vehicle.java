@@ -7,7 +7,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import girnara.abhay.parking.domain.model.ParkingTicket;
 import girnara.abhay.parking.domain.model.commons.AbstractConstants;
 import lombok.Data;
-
+/**
+ * Created by abhay on 30/03/19.
+ */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
+/**
+ * Created by abhay on 30/03/19.
+ */
 @RestController
 @RequestMapping("/v1/health")
 @Slf4j
 public class HealthCheckController {
 
   @RequestMapping(value = "/{secretKey}", method = RequestMethod.GET, produces = "application/json")
-  public ResponseEntity<ServiceResponse<String>> getParkingLot(@PathVariable("secretKey") String secretKey) throws Exception {
+  public ResponseEntity<ServiceResponse<String>> healthCheck(@PathVariable("secretKey") String secretKey) throws Exception {
     ServiceResponse<String> serviceResponse = new ServiceResponse<>();
     if(StringUtils.isEmpty(secretKey) || !secretKey.equals(AbstractConstants.SECRET_KEY)) {
       throw new NonRecoverableException(AbstractConstants.ExceptionCode.UNAUTHORISED_ACCESS_ERROR.getMessage(), AbstractConstants.ExceptionCode.UNAUTHORISED_ACCESS_ERROR);
