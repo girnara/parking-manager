@@ -56,8 +56,8 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
   ],
   "id": "WeWorkParking",
   "largeSpotCount": 0,
-  "maxLargeCount": 20,
-  "maxMotorbikeCount": 20,
+  "maxLargeCount": 2,
+  "maxMotorbikeCount": 1,
   "motorbikeSpotCount": 0,
   "name": "weWorkBlueOneSquare",
   "parkingFloors": [
@@ -70,170 +70,15 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
         "2": {
           "type":"LARGE",
           "free": true
-        },
-        "3": {
-          "type":"LARGE",
-          "free": true
-        },
-        "4": {
-          "type":"LARGE",
-          "free": true
-        },
-        "5": {
-          "type":"LARGE",
-          "free": true
-        },
-        "6": {
-          "type":"LARGE",
-          "free": true
-        },
-        "7": {
-          "type":"LARGE",
-          "free": true
-        },
-        "8": {
-          "type":"LARGE",
-          "free": true
-        },
-        "9": {
-          "type":"LARGE",
-          "free": true
-        },
-        "10": {
-          "type":"LARGE",
-          "free": true
         }
       },
       "motorbikeSpots": {
-        "11": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "12": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "13": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "14": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "15": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "16": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "17": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "18": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "19": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
         "20": {
           "type":"MOTORBIKE",
           "free": true
         }
       },
       "name": "LEVEL-B1"
-    },
-    {
-      "largeSpots": {
-        "101": {
-          "type":"LARGE",
-          "free": true
-        },
-        "102": {
-          "type":"LARGE",
-          "free": true
-        },
-        "103": {
-          "type":"LARGE",
-          "free": true
-        },
-        "104": {
-          "type":"LARGE",
-          "free": true
-        },
-        "105": {
-          "type":"LARGE",
-          "free": true
-        },
-        "106": {
-          "type":"LARGE",
-          "free": true
-        },
-        "107": {
-          "type":"LARGE",
-          "free": true
-        },
-        "108": {
-          "type":"LARGE",
-          "free": true
-        },
-        "109": {
-          "type":"LARGE",
-          "free": true
-        },
-        "110": {
-          "type":"LARGE",
-          "free": true
-        }
-      },
-      "motorbikeSpots": {
-        "111": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "112": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "113": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "114": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "115": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "116": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "117": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "118": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "119": {
-          "type":"MOTORBIKE",
-          "free": true
-        },
-        "120": {
-          "type":"MOTORBIKE",
-          "free": true
-        }
-      },
-      "name": "LEVEL-B2"
     }
   ],
   "parkingRate": {
@@ -242,7 +87,7 @@ curl -X POST --header 'Content-Type: application/json' --header 'Accept: applica
       "WEEKENDS": 25.5
     }
   }
-}' 'http://localhost:28080/v1/admin/WeWork'
+}' 'http://localhost:28080/v1/admin/WeWork'                                                                                                                               }' 'http://localhost:28080/v1/admin/WeWork'
 ```
 
 Response Json:
@@ -252,7 +97,7 @@ Response Json:
   "status": "SUCCESS",
   "statusMessage": "Successfully processed your request",
   "payload": {
-    "id": "ec3e6dd8-3315-4861-a723-a3012cd5ee62",
+    "id": "cb396b33-06ac-409c-9460-d0b51f3d64bc",
     "name": "weWorkBlueOneSquare",
     "address": {
       "streetAddress": "BlueOneSquare",
@@ -269,8 +114,9 @@ Response Json:
     },
     "largeSpotCount": 0,
     "motorbikeSpotCount": 0,
-    "maxLargeCount": 20,
-    "maxMotorbikeCount": 20,
+    "maxLargeCount": 2,
+    "maxMotorbikeCount": 1,
+    "existingVehicles": {},
     "entranceGates": [
       {
         "id": "GATE-ENTRY-1"
@@ -290,128 +136,10 @@ Response Json:
           },
           "2": {
             "type": "LARGE"
-          },
-          "3": {
-            "type": "LARGE"
-          },
-          "4": {
-            "type": "LARGE"
-          },
-          "5": {
-            "type": "LARGE"
-          },
-          "6": {
-            "type": "LARGE"
-          },
-          "7": {
-            "type": "LARGE"
-          },
-          "8": {
-            "type": "LARGE"
-          },
-          "9": {
-            "type": "LARGE"
-          },
-          "10": {
-            "type": "LARGE"
           }
         },
         "motorbikeSpots": {
-          "11": {
-            "type": "MOTORBIKE"
-          },
-          "12": {
-            "type": "MOTORBIKE"
-          },
-          "13": {
-            "type": "MOTORBIKE"
-          },
-          "14": {
-            "type": "MOTORBIKE"
-          },
-          "15": {
-            "type": "MOTORBIKE"
-          },
-          "16": {
-            "type": "MOTORBIKE"
-          },
-          "17": {
-            "type": "MOTORBIKE"
-          },
-          "18": {
-            "type": "MOTORBIKE"
-          },
-          "19": {
-            "type": "MOTORBIKE"
-          },
           "20": {
-            "type": "MOTORBIKE"
-          }
-        }
-      },
-      {
-        "name": "LEVEL-B2",
-        "largeSpots": {
-          "101": {
-            "type": "LARGE"
-          },
-          "102": {
-            "type": "LARGE"
-          },
-          "103": {
-            "type": "LARGE"
-          },
-          "104": {
-            "type": "LARGE"
-          },
-          "105": {
-            "type": "LARGE"
-          },
-          "106": {
-            "type": "LARGE"
-          },
-          "107": {
-            "type": "LARGE"
-          },
-          "108": {
-            "type": "LARGE"
-          },
-          "109": {
-            "type": "LARGE"
-          },
-          "110": {
-            "type": "LARGE"
-          }
-        },
-        "motorbikeSpots": {
-          "111": {
-            "type": "MOTORBIKE"
-          },
-          "112": {
-            "type": "MOTORBIKE"
-          },
-          "113": {
-            "type": "MOTORBIKE"
-          },
-          "114": {
-            "type": "MOTORBIKE"
-          },
-          "115": {
-            "type": "MOTORBIKE"
-          },
-          "116": {
-            "type": "MOTORBIKE"
-          },
-          "117": {
-            "type": "MOTORBIKE"
-          },
-          "118": {
-            "type": "MOTORBIKE"
-          },
-          "119": {
-            "type": "MOTORBIKE"
-          },
-          "120": {
             "type": "MOTORBIKE"
           }
         }
