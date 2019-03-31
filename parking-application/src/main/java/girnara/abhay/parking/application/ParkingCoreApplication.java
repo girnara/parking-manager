@@ -61,7 +61,7 @@ public class ParkingCoreApplication {
             "1.0",
             "Terms of service",
             new Contact("Abhay Girnara", "https://abhay.girnara", "girnara.abhay@gmail.com"),
-            "© 2018 msg.ai",
+            "© 2019 abhay.girnara",
             "https://abhay.girnara");
         return apiInfo;
     }
