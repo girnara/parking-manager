@@ -366,6 +366,8 @@ parking-service        : All business logic for create/read/update/delete a serv
 parking-application    : All application configuration and bean initialization.
 ```
 
+### Class diagram
+![alt text](https://raw.githubusercontent.com/girnara/parking-manager/master/classes.png?token=ATc1JKv676pa3ExvTiPP0kWWcC05ggPfks5coGx9wA%3D%3D)
 ### Authors
 
 * **Abhay Girnara** - *Initial work* - [girnara](https://github.com/girnara)
