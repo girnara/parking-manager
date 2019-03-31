@@ -20,7 +20,7 @@
 - name: Service Dependencies | Copy data json file to target host
   template: src=data.json dest=/App/data.json mode=0775
 
-- name: Remove symlink // After first attempt uncomment it
+- name: Remove symlink | After first attempt uncomment it
   file:
    path: '"{{deployment_app_directory}}"/service'
    state: absent

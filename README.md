@@ -21,7 +21,7 @@ You need to install java 1.8 on your system before starting this project.
 Install JAVA 1.8 on your development environment
 ```
 
-### Installing
+### Installing parking lot
 
 Once application is up and running
 
@@ -150,7 +150,7 @@ Response Json:
 }
 ```
 
-## Create parking ticket
+### Create parking ticket
 
 Goto http://localhost:28080/swagger-ui.html#!/parking-controller/parkUsingPOST and provide parking-application/src/main/resources/data/parking-request.json
 ```
@@ -175,7 +175,7 @@ Response Json:
 }
 ```
 
-## Un Park and Pay for parking
+### Un Park and Pay for parking
 Goto http://localhost:28080/swagger-ui.html#!/parking-controller/unParkUsingPUT and provide the ticketId, clientId as given in example
 
 ```
@@ -198,7 +198,7 @@ Response Json
 }
 ```
 
-## Get Parking Lot info
+### Get parking lot info
 Goto link and run following commands
 ```
 curl -X GET --header 'Accept: application/json' --header 'X-ACCESS-TOKEN: TEST' 'http://localhost:28080/v1/admin/WeWork'
@@ -311,7 +311,7 @@ Response Json:
 ```
 
 
-## Search Parking Ticket By Registration Number
+### Search parking ticket by vehicle registration number
 Goto http://localhost:28080/swagger-ui.html#!/admin-controller/getParkingTicketUsingGET and run following command to search the parking ticket by registration number
 ```
 curl -X GET --header 'Accept: application/json' --header 'X-ACCESS-TOKEN: TEST' 'http://localhost:28080/v1/admin/WeWork/vehicles/HR26-BW1234'
@@ -332,11 +332,11 @@ Response Json:
 }
 ```
 
-## Deployment
+### Deployment
 
 Deployment folder contain the ansible role for deployment on ubuntu 16.04 as systemctl service with slack notification
-Export your build number as 100(It can be your jenkins build number. You need to add the ssh public key on target hosts. We uniquely identify the application by its name(parking), region(in/us/eu/cn/jp), env(dev/qa/uat/prod)
-You need to create manual symbolic link first time to avoid ansible role failure in service.yml line number
+Export your build number as 100(It can be your jenkins build number). You need to add the ssh public key on target hosts. We uniquely identify the application by its name(parking), region(in/us/eu/cn/jp), env(dev/qa/uat/prod)
+You need to create manual symbolic link first time to avoid ansible role failure in service.yml line number 23(You can comment out that task for first build and uncomment for subsequent build).
 ```
 $ export BUILD_NUMBER=100
 $ mkdir -p deployment/application/$BUILD_NUMBER
@@ -346,7 +346,7 @@ $ sudo ansible-playbook -e "env=dev" -e "region=in"  -e "BUILD_NUMBER=100" -i in
 ```
 
 
-## Logging
+### Logging
 For local development logging will be in project root directory. i.e. with parking-application.log file. Each file as size cap of 200MB and purged automatically after the number of days limit.
 ```
 DEV  : /App/log/core/parking-manager/parking-application-in-dev.log
@@ -356,7 +356,7 @@ PROD : /App/log/core/parking-manager/parking-application-in-prod.log
 
 ```
 
-## Package structure
+### Package structure
 As a service we have created multiple package with each having different responsibilities.
 ```
 parking-domain-model   : Storing the common domain model POJO, common utilities and interfaces.
@@ -365,6 +365,7 @@ parking-repository     : All the persistence repository to store the current sta
 parking-service        : All business logic for create/read/update/delete a service and controller.
 parking-application    : All application configuration and bean initialization.
 ```
-## Authors
+
+### Authors
 
 * **Abhay Girnara** - *Initial work* - [girnara](https://github.com/girnara)
