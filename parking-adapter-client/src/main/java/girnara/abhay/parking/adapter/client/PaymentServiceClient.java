@@ -29,6 +29,8 @@ public class PaymentServiceClient {
       parkingTicket.setPayedAmount(AbstractConstants.DEFAULT_PARKING_FEE);
     }
     parkingTicket.setStatus(AbstractConstants.ParkingTicketStatus.PAID);
+    parkingTicket.setPayedAt(new DateTime(AbstractConstants.DEFAULT_TIME_ZONE));
+    parkingTicket.setPaymentReferenceId(AbstractConstants.DEFAULT_PAYMENT_REF);
     return parkingTicket;
   }
 }

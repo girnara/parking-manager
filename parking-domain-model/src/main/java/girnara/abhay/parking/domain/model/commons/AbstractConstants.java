@@ -4,6 +4,7 @@ import org.joda.time.DateTimeZone;
 
 public abstract class AbstractConstants {
   public static final String DEFAULT_TYPE_DAY = "DEFAULT";
+  public static final String DEFAULT_PAYMENT_REF = "CASH";
   public static final String SECRET_KEY = "366xhegrndhfspwiryrskwhd0801";
   public static final double DEFAULT_PARKING_FEE = 100.0;
   public static final DateTimeZone DEFAULT_TIME_ZONE = DateTimeZone.UTC;
