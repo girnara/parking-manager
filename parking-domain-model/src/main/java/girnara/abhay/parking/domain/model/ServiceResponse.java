@@ -6,8 +6,11 @@ import girnara.abhay.parking.domain.model.commons.AbstractConstants;
 import lombok.Data;
 
 import java.io.Serializable;
+
 /**
  * Created by abhay on 30/03/19.
+ *
+ * @param <T> the type parameter
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)

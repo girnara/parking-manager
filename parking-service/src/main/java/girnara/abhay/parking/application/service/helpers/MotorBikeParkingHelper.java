@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 /**
  * Created by abhay on 30/03/19.
  */
@@ -50,6 +51,16 @@ public class MotorBikeParkingHelper implements ParkingHelper {
     throw new NonRecoverableException(AbstractConstants.ExceptionCode.DOWN_STREAM_SERVICE_ERROR.getMessage(), AbstractConstants.ExceptionCode.DOWN_STREAM_SERVICE_ERROR);
   }
 
+  /**
+   * Park helper for motor bike in large spot parking ticket.
+   *
+   * @param clientId   the client id
+   * @param vehicle    the vehicle
+   * @param parkingLot the parking lot
+   * @return the parking ticket
+   * @throws NonRecoverableException the non recoverable exception
+   * @throws RecoverableException    the recoverable exception
+   */
   public ParkingTicket parkHelperForMotorBikeInLargeSpot(String clientId, Vehicle vehicle, ParkingLot parkingLot) throws NonRecoverableException, RecoverableException {
     List<ParkingFloor> parkingFloors = parkingLot.getParkingFloors();
     for(ParkingFloor parkingFloor : parkingFloors ) {

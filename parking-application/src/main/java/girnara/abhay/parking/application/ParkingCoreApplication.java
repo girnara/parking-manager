@@ -32,9 +32,9 @@ public class ParkingCoreApplication {
      * Detail Project documentations can be found at confluence :
      * https://github.com/girnara/parking-manager
      *
-     *
-    * */
-
+     * @param args the input arguments
+     * @throws Exception the exception
+     */
     public static void main(String[] args) throws Exception{
 
         SpringApplication.run(ParkingCoreApplication.class, args);
@@ -42,8 +42,11 @@ public class ParkingCoreApplication {
     }
 
 
-
-
+    /**
+     * Swagger settings docket.
+     *
+     * @return the docket
+     */
     @Bean
     public Docket swaggerSettings() {
         ParameterBuilder aParameterBuilder = new ParameterBuilder();

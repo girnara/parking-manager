@@ -7,6 +7,7 @@ import girnara.abhay.parking.domain.model.vehicles.Vehicle;
 import lombok.Data;
 
 import java.io.Serializable;
+
 /**
  * Created by abhay on 30/03/19.
  */
@@ -20,20 +21,38 @@ public abstract class ParkingSpot implements Serializable {
   private Vehicle vehicle;
   private final AbstractConstants.ParkingSpotType type;
 
+  /**
+   * Is free boolean.
+   *
+   * @return the boolean
+   */
   public boolean IsFree() {
     return this.free;
   }
 
+  /**
+   * Instantiates a new Parking spot.
+   *
+   * @param type the type
+   */
   public ParkingSpot(AbstractConstants.ParkingSpotType type) {
     this.type = type;
     this.free = true;
   }
 
+  /**
+   * Assign vehicle.
+   *
+   * @param vehicle the vehicle
+   */
   public void assignVehicle(Vehicle vehicle) {
     this.vehicle = vehicle;
     this.free = false;
   }
 
+  /**
+   * Remove vehicle.
+   */
   public void removeVehicle() {
     this.vehicle = null;
     free = true;

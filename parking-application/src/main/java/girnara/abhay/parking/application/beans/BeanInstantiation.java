@@ -7,17 +7,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import girnara.abhay.parking.application.config.ParkingConfig;
+
 /**
  * Created by abhay on 30/03/19.
  */
 @Configuration
 public class BeanInstantiation {
     private static Logger LOGGER = LoggerFactory.getLogger(BeanInstantiation.class);
-    public static final String SERVICE_NAME = "Parking";
-
     @Autowired
     private ParkingConfig parkingConfig;
-    @Bean(name = "serviceName")
+
+  /**
+   * Gets service name.
+   *
+   * @return the service name
+   */
+  @Bean(name = "serviceName")
     public String getServiceName() {
         return parkingConfig.getServiceName();
     }

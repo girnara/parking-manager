@@ -7,6 +7,7 @@ import lombok.Data;
 import org.joda.time.DateTime;
 
 import java.io.Serializable;
+
 /**
  * Created by abhay on 30/03/19.
  */

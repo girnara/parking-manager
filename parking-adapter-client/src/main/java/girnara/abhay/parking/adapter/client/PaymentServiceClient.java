@@ -17,6 +17,17 @@ import org.springframework.util.ObjectUtils;
 @Service
 public class PaymentServiceClient {
   private static final long HOUR_MILLI_SECONDS = 60*60;
+
+  /**
+   * Payable amount parking ticket.
+   *
+   * @param clientId      the client id
+   * @param parkingLot    the parking lot
+   * @param parkingTicket the parking ticket
+   * @return the parking ticket
+   * @throws NonRecoverableException the non recoverable exception
+   * @throws RecoverableException    the recoverable exception
+   */
   public ParkingTicket payableAmount(String clientId, ParkingLot parkingLot, ParkingTicket parkingTicket) throws NonRecoverableException, RecoverableException {
     long timestamp = new DateTime(AbstractConstants.DEFAULT_TIME_ZONE).getMillis();
     long totalTime = (timestamp - parkingTicket.getTimestamp())/1000;

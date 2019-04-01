@@ -6,6 +6,7 @@ import girnara.abhay.parking.domain.model.exceptions.NonRecoverableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
 /**
  * Created by abhay on 30/03/19.
  */
@@ -18,6 +19,13 @@ public class ParkingHelperFactory {
   @Qualifier("largeVehicleParkingHelper")
   private ParkingHelper largeVehicleParkingHelper;
 
+  /**
+   * Gets helper by vehicle type.
+   *
+   * @param vehicleType the vehicle type
+   * @return the helper by vehicle type
+   * @throws NonRecoverableException the non recoverable exception
+   */
   public ParkingHelper getHelperByVehicleType(AbstractConstants.VehicleType vehicleType) throws NonRecoverableException {
     switch (vehicleType) {
       case BUS:

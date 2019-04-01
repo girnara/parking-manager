@@ -16,6 +16,9 @@ import java.io.Serializable;
 public class LargeSpot extends ParkingSpot implements Serializable {
   private static final long serialVersionUID = 8635045707308476081L;
 
+  /**
+   * Instantiates a new Large spot.
+   */
   public LargeSpot() {
     super(AbstractConstants.ParkingSpotType.LARGE);
   }

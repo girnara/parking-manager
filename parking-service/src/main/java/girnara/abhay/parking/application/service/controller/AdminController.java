@@ -33,6 +33,14 @@ public class AdminController {
     private ParkingRequestProcessor parkingRequestProcessor;
     private static Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
 
+    /**
+     * Gets reports all.
+     *
+     * @param parkingLot the parking lot
+     * @param clientId   the client id
+     * @return the reports all
+     * @throws Exception the exception
+     */
     @RequestMapping(value = "/{clientId}", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<ServiceResponse<ParkingLot>> getReportsAll(@RequestBody ParkingLot parkingLot, @PathVariable("clientId") String clientId) throws Exception {
         ServiceResponse<ParkingLot> serviceResponse = new ServiceResponse<>();
@@ -48,6 +56,13 @@ public class AdminController {
         return new ResponseEntity<>(serviceResponse, HttpStatus.CREATED);
     }
 
+    /**
+     * Gets parking lot.
+     *
+     * @param clientId the client id
+     * @return the parking lot
+     * @throws Exception the exception
+     */
     @RequestMapping(value = "/{clientId}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<ServiceResponse<ParkingLot>> getParkingLot(@PathVariable("clientId") String clientId) throws Exception {
         ServiceResponse<ParkingLot> serviceResponse = new ServiceResponse<>();
@@ -63,6 +78,14 @@ public class AdminController {
         return new ResponseEntity<>(serviceResponse, HttpStatus.OK);
     }
 
+    /**
+     * Gets parking ticket.
+     *
+     * @param clientId                  the client id
+     * @param vehicleRegistrationNumber the vehicle registration number
+     * @return the parking ticket
+     * @throws Exception the exception
+     */
     @RequestMapping(value = "/{clientId}/vehicles/{vehicleRegistrationNumber}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<ServiceResponse<ParkingTicket>> getParkingTicket(@PathVariable("clientId") String clientId, @PathVariable("vehicleRegistrationNumber") String vehicleRegistrationNumber) throws Exception {
         ServiceResponse<ParkingTicket> serviceResponse = new ServiceResponse<>();

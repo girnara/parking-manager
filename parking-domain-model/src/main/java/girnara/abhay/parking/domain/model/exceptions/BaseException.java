@@ -9,13 +9,26 @@ public class BaseException extends Exception {
     private final String message;
     private final AbstractConstants.ExceptionCode exceptionCode;
 
-    public BaseException(Throwable cause, String message, AbstractConstants.ExceptionCode exceptionCode) {
+  /**
+   * Instantiates a new Base exception.
+   *
+   * @param cause         the cause
+   * @param message       the message
+   * @param exceptionCode the exception code
+   */
+  public BaseException(Throwable cause, String message, AbstractConstants.ExceptionCode exceptionCode) {
         super(cause);
         this.message = message;
         this.exceptionCode = exceptionCode;
     }
 
-    public BaseException(String message, AbstractConstants.ExceptionCode exceptionCode) {
+  /**
+   * Instantiates a new Base exception.
+   *
+   * @param message       the message
+   * @param exceptionCode the exception code
+   */
+  public BaseException(String message, AbstractConstants.ExceptionCode exceptionCode) {
         super(message);
         this.message = message;
         this.exceptionCode = exceptionCode;
@@ -31,7 +44,12 @@ public class BaseException extends Exception {
         return message;
     }
 
-    public AbstractConstants.ExceptionCode getExceptionCode() {
+  /**
+   * Gets exception code.
+   *
+   * @return the exception code
+   */
+  public AbstractConstants.ExceptionCode getExceptionCode() {
         return exceptionCode;
     }
 

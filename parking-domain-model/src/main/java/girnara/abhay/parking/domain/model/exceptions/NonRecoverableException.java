@@ -12,11 +12,24 @@ public class NonRecoverableException extends BaseException {
 	 */
 	private static final long serialVersionUID = 2662879568402830555L;
 
-	public NonRecoverableException(Throwable cause, String message, AbstractConstants.ExceptionCode exceptionCode) {
+  /**
+   * Instantiates a new Non recoverable exception.
+   *
+   * @param cause         the cause
+   * @param message       the message
+   * @param exceptionCode the exception code
+   */
+  public NonRecoverableException(Throwable cause, String message, AbstractConstants.ExceptionCode exceptionCode) {
         super(cause, message, exceptionCode);
     }
 
-    public NonRecoverableException(String message, AbstractConstants.ExceptionCode exceptionCode) {
+  /**
+   * Instantiates a new Non recoverable exception.
+   *
+   * @param message       the message
+   * @param exceptionCode the exception code
+   */
+  public NonRecoverableException(String message, AbstractConstants.ExceptionCode exceptionCode) {
         super(message, exceptionCode);
     }
 }

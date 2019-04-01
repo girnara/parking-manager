@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import girnara.abhay.parking.domain.model.ParkingTicket;
 import girnara.abhay.parking.domain.model.commons.AbstractConstants;
 import lombok.Data;
+
 /**
  * Created by abhay on 30/03/19.
  */
@@ -25,10 +26,21 @@ public abstract class Vehicle {
   private String registrationNumber;
   private final AbstractConstants.VehicleType type;
   private ParkingTicket ticket;
+
+  /**
+   * Instantiates a new Vehicle.
+   *
+   * @param type the type
+   */
   public Vehicle(AbstractConstants.VehicleType type) {
     this.type = type;
   }
 
+  /**
+   * Assign ticket.
+   *
+   * @param ticket the ticket
+   */
   public void assignTicket(ParkingTicket ticket) {
     this.ticket = ticket;
   }

@@ -35,7 +35,15 @@ public class ParkingController {
     private ParkingRequestProcessor parkingRequestProcessor;
     private static Logger LOGGER = LoggerFactory.getLogger(ParkingController.class);
 
-    @RequestMapping(value = "/{clientId}", method = RequestMethod.POST, produces = "application/json")
+  /**
+   * Park response entity.
+   *
+   * @param vehicle  the vehicle
+   * @param clientId the client id
+   * @return the response entity
+   * @throws Exception the exception
+   */
+  @RequestMapping(value = "/{clientId}", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<ServiceResponse<ParkingTicket>> park(@RequestBody Vehicle vehicle, @PathVariable("clientId") String clientId) throws Exception {
         ServiceResponse<ParkingTicket> serviceResponse = new ServiceResponse<>();
         if(vehicle == null || StringUtils.isEmpty(clientId)) {
@@ -51,7 +59,15 @@ public class ParkingController {
     }
 
 
-    @RequestMapping(value = "/{clientId}/{parkingTicketId}", method = RequestMethod.PUT, produces = "application/json")
+  /**
+   * Un park response entity.
+   *
+   * @param clientId        the client id
+   * @param parkingTicketId the parking ticket id
+   * @return the response entity
+   * @throws Exception the exception
+   */
+  @RequestMapping(value = "/{clientId}/{parkingTicketId}", method = RequestMethod.PUT, produces = "application/json")
     public ResponseEntity<ServiceResponse<ParkingTicket>> unPark( @PathVariable("clientId") String clientId, @PathVariable("parkingTicketId") String parkingTicketId) throws Exception {
         ServiceResponse<ParkingTicket> serviceResponse = new ServiceResponse<>();
         if(StringUtils.isEmpty(clientId) || StringUtils.isEmpty(parkingTicketId)) {

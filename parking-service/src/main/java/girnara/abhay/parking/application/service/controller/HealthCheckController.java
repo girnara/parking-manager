@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 /**
  * Created by abhay on 30/03/19.
  */
@@ -21,6 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class HealthCheckController {
 
+  /**
+   * Health check response entity.
+   *
+   * @param secretKey the secret key
+   * @return the response entity
+   * @throws Exception the exception
+   */
   @RequestMapping(value = "/{secretKey}", method = RequestMethod.GET, produces = "application/json")
   public ResponseEntity<ServiceResponse<String>> healthCheck(@PathVariable("secretKey") String secretKey) throws Exception {
     ServiceResponse<String> serviceResponse = new ServiceResponse<>();
