@@ -88,19 +88,4 @@ public class ControllerExceptionHandler {
 		return new ResponseEntity<ServiceResponse>(serviceResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-  /**
-   * Generate bad request exception response entity.
-   *
-   * @param exceptionCode the exception code
-   * @param ex            the ex
-   * @return the response entity
-   */
-  ResponseEntity<ServiceResponse> generateBadRequestException(AbstractConstants.ExceptionCode exceptionCode, Throwable ex){
-		ServiceResponse serviceResponse = new ServiceResponse();
-		serviceResponse.setStatus(AbstractConstants.FAILED_STATUS_CODE);
-		serviceResponse.setExceptionCode(exceptionCode);
-		serviceResponse.setStatusMessage(ex.getMessage());
-		return new ResponseEntity<ServiceResponse>(serviceResponse, HttpStatus.BAD_REQUEST);
-	}
-
 }

@@ -34,15 +34,15 @@ public class AdminController {
     private static Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
 
     /**
-     * Gets reports all.
+     * create Parking lot.
      *
      * @param parkingLot the parking lot
      * @param clientId   the client id
-     * @return the reports all
+     * @return the Parking Lot
      * @throws Exception the exception
      */
     @RequestMapping(value = "/{clientId}", method = RequestMethod.POST, produces = "application/json")
-    public ResponseEntity<ServiceResponse<ParkingLot>> getReportsAll(@RequestBody ParkingLot parkingLot, @PathVariable("clientId") String clientId) throws Exception {
+    public ResponseEntity<ServiceResponse<ParkingLot>> createParkingLot(@RequestBody ParkingLot parkingLot, @PathVariable("clientId") String clientId) throws Exception {
         ServiceResponse<ParkingLot> serviceResponse = new ServiceResponse<>();
         if(parkingLot == null || StringUtils.isEmpty(clientId)) {
             throw new NonRecoverableException(AbstractConstants.ExceptionCode.NULL_REQUEST_ERROR.getMessage(), AbstractConstants.ExceptionCode.NULL_REQUEST_ERROR);
@@ -57,7 +57,7 @@ public class AdminController {
     }
 
     /**
-     * Gets parking lot.
+     * Gets parking lot by clientId.
      *
      * @param clientId the client id
      * @return the parking lot
@@ -79,7 +79,7 @@ public class AdminController {
     }
 
     /**
-     * Gets parking ticket.
+     * Gets parking ticket by registration number.
      *
      * @param clientId                  the client id
      * @param vehicleRegistrationNumber the vehicle registration number

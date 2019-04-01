@@ -36,7 +36,7 @@ public class ParkingController {
     private static Logger LOGGER = LoggerFactory.getLogger(ParkingController.class);
 
   /**
-   * Park response entity.
+   * Park vehicle and get parking ticket.
    *
    * @param vehicle  the vehicle
    * @param clientId the client id
@@ -60,7 +60,7 @@ public class ParkingController {
 
 
   /**
-   * Un park response entity.
+   * Un park vehicle and pay the parking amount.
    *
    * @param clientId        the client id
    * @param parkingTicketId the parking ticket id
