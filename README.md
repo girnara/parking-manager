@@ -367,7 +367,8 @@ parking-application    : All application configuration and bean initialization.
 ```
 
 ### Class diagram
-![alt text](https://raw.githubusercontent.com/girnara/parking-manager/master/classes.png)
+![ClassDiagram](./classes.png "ClassDiagram")
+
 ### Authors
 
 * **Abhay Girnara** - *Initial work* - [girnara](https://github.com/girnara)
