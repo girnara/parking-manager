@@ -20,13 +20,13 @@ import girnara.abhay.parking.domain.model.exceptions.RecoverableException;
 @Slf4j
 public class ControllerExceptionHandler {
 
-  /**
-   * Non recoverable exception handler response entity.
-   *
-   * @param ex the ex
-   * @return the response entity
-   */
-  @ResponseBody
+	/**
+	 * Non recoverable exception handler response entity.
+	 *
+	 * @param ex the ex
+	 * @return the response entity
+	 */
+	@ResponseBody
 	@ExceptionHandler(NonRecoverableException.class)
 	ResponseEntity<ServiceResponse> nonRecoverableExceptionHandler(NonRecoverableException ex) {
 		ServiceResponse serviceResponse = new ServiceResponse();
@@ -37,13 +37,13 @@ public class ControllerExceptionHandler {
 		return new ResponseEntity<ServiceResponse>(serviceResponse, HttpStatus.BAD_REQUEST);
 	}
 
-  /**
-   * Recoverable exception handler response entity.
-   *
-   * @param ex the ex
-   * @return the response entity
-   */
-  @ResponseBody
+	/**
+	 * Recoverable exception handler response entity.
+	 *
+	 * @param ex the ex
+	 * @return the response entity
+	 */
+	@ResponseBody
 	@ExceptionHandler(RecoverableException.class)
 	ResponseEntity<ServiceResponse> recoverableExceptionHandler(RecoverableException ex) {
 		ServiceResponse serviceResponse = new ServiceResponse();
@@ -54,13 +54,13 @@ public class ControllerExceptionHandler {
 		return new ResponseEntity<ServiceResponse>(serviceResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-  /**
-   * Json exception response entity.
-   *
-   * @param ex the ex
-   * @return the response entity
-   */
-  @ResponseBody
+	/**
+	 * Json exception response entity.
+	 *
+	 * @param ex the ex
+	 * @return the response entity
+	 */
+	@ResponseBody
 	@ExceptionHandler({HttpMessageConversionException.class})
 	ResponseEntity<ServiceResponse> jsonException(HttpMessageConversionException ex) {
 		ServiceResponse serviceResponse = new ServiceResponse();
@@ -71,13 +71,13 @@ public class ControllerExceptionHandler {
 		return new ResponseEntity<ServiceResponse>(serviceResponse, HttpStatus.BAD_REQUEST);
 	}
 
-  /**
-   * Generic exception handler response entity.
-   *
-   * @param ex the ex
-   * @return the response entity
-   */
-  @ResponseBody
+	/**
+	 * Generic exception handler response entity.
+	 *
+	 * @param ex the ex
+	 * @return the response entity
+	 */
+	@ResponseBody
 	@ExceptionHandler({Throwable.class})
 	ResponseEntity<ServiceResponse> genericExceptionHandler(Throwable ex) {
 		ServiceResponse serviceResponse = new ServiceResponse();
